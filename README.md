@@ -24,6 +24,15 @@ Build an automated, end-to-end Power BI reporting suite that delivers daily, tru
 - **Relational data model:** Designed a clean model linking eight core tables—Accounts, Invoice History, Date, Opportunities, Products & Services, Code Headers, System Users, and Xero Credit Notes—so measures are accurate and performant.
 - **Automated refresh & transparency:** Added a visible “Last Refreshed” timestamp (example: 11 Aug 2026, 22:21) so users know when data was last updated.
 
+### Executive Dashboard
+![Executive Dashboard](docs/Exec-Dashboard.png)
+
+### Sales Dashboard
+![Sales Dashboard](docs/Sales-Dashboard.png)
+
+### Quotes Dashboard
+![Quotes Dashboard](docs/Quotes-Dashboard.png)
+
 ---
 
 ## The solution — three focused dashboards (impact-first)
