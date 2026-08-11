@@ -67,10 +67,6 @@ Build an automated, end-to-end Power BI reporting suite that delivers daily, tru
 
 ---
 
-If you’d like, I can:
-
-- Add screenshots or a short demo GIF to the README for visual context.
-- Expand the README with an architecture diagram and refresh schedule details.
 
 Regards,
 
