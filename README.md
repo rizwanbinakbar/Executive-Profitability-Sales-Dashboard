@@ -1,4 +1,4 @@
-# Executive Profitability & Sales Dashboard
+# Financial & Sales Reporting Suite
 
 **Client:** UK-Based Lighting Company  
 **Role:** Data Analyst / Power BI Developer  
