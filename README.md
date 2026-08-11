@@ -1,82 +1,73 @@
-Comprehensive Financial & Sales Reporting Suite
+# Executive Profitability & Sales Dashboard
 
-Client: UK-Based Lighting Company
+Comprehensive financial and sales reporting suite built with Power BI for a UK-based lighting company.
 
-Role: Data Analyst / Power BI Developer
+- **Client:** UK-Based Lighting Company  
+- **Role:** Data Analyst / Power BI Developer  
+- **Status:** Completed
 
-Status: Completed
+---
 
-Project Objective
+## Project Objective
+Design and deliver an automated, end-to-end Power BI reporting suite that provides daily insights into true profitability, granular sales trends, and quote conversion performance for stakeholders across departments.
 
-To engineer an automated, end-to-end Power BI reporting suite providing stakeholders across different departments with daily insights into true profitability, granular sales trends, and quote conversions by integrating complex CRM, accounting, and flat-file data.
+---
 
-The Problem
+## The Problem
+- **Siloed data:** Financial and CRM data lived in Dynamics 365, Xero Accounting, and Excel files on SharePoint.  
+- **Extraction limitations:** Dynamics 365 data was complex and restricted by view forms, preventing standard table extraction.  
+- **Hidden profitability:** Net profit was obscured due to credit notes in Xero and Excel that required manual deductions from gross profit.  
+- **Lack of unified reporting:** No central reporting hub separating executive summaries from department-level metrics.  
+- **Manual bottlenecks:** Reporting processes were manual and stakeholders lacked visibility into data currency and refresh times.
 
-    Siloed Data: Financial and CRM data were scattered across Dynamics 365, Xero Accounting, and flat Excel files (SharePoint).
+---
 
-    Extraction Limitations: Dynamics 365 data was highly complex and restricted within view forms, making standard table extraction impossible.
+## Data Architecture & Integration
+- **Tri-source pipeline:** Integrated Dynamics 365, Xero, and Excel (SharePoint) into a single automated ETL pipeline.  
+- **Custom pagination for Dynamics 365:** Engineered a custom M / Power Query function to paginate an OData feed (odata.maxpagesize=5000) and reliably extract records beyond standard view limits.  
+- **Data modeling:** Built a relational model linking core tables: Accounts, Invoice History, Date, Opportunities, Products & Services, Code Headers, System Users, and Xero Credit Notes.  
+- **Automation & refreshes:** Scheduled refreshes via Power BI Gateway to keep data current and reduce manual effort.
 
-    Hidden Profitability: Actual net profit was obscured because credit notes from Xero and Excel needed to be manually deducted from gross profits.
+---
 
-    Lack of Unified Reporting: Stakeholders lacked a central hub that separated executive-level summaries from granular, department-specific metrics (Sales and Quotes).
+## Solution — 3-Part Power BI Dashboard Suite
+A single Power BI report with three focused dashboards (tabbed) to serve different audiences:
 
-    Manual Bottlenecks: Reporting was highly manual, and stakeholders had no visibility into data currency or refresh times.
+### 1) Executive Dashboard
+- Displays true net profit by programmatically combining live Xero financials and supplemental Excel adjustments (automatically deducts credit notes).  
+- Custom DAX measures for YoY percentage change with conditional formatting to highlight positive/negative shifts.  
+- High-level KPIs and executive-friendly visuals for fast decision making.
 
-Data Architecture & Integration
+### 2) Sales Dashboard
+- Tracks key KPIs: Invoice Count (example: 4,362), Average Invoice Value (example: £1.55K), Total Credits (example: £30.70K).  
+- Top 20 Accounts and Top Products by sales to identify revenue drivers.  
+- "Xero Status Breakdown" donut chart to monitor invoice payment states (Paid, Awaiting Payment, Authorised, Voided, Draft) — >80% Paid in the sample dataset.  
+- Monthly trend visualizations and estimated revenue by account owner.
 
-    Tri-Source Pipeline: Seamlessly connected and integrated three disparate data sources: Microsoft Dynamics 365, Xero Accounting, and Excel (via SharePoint).
+### 3) Quotes Dashboard
+- Monitors Quote Count (example: 1,047), Total Quote Value (example: £3.49M), and Average Margin (example: 38.89%).  
+- Conversion and quote-state metrics (Active vs. Inactive) and monthly quote generation trends.  
+- Owner- and account-level analytics highlighting top accounts by quote value (examples: ABCD Asackpool, Edmundson).
 
-    Custom API Pagination (Dynamics 365): Bypassed standard view limitations by engineering a custom M/Power Query function. Utilized an OData feed (odata.maxpagesize=5000) with dynamic pagination logic to extract complex raw data directly from the CRM.
+---
 
-    Data Modeling: Designed a robust relational data model connecting eight core tables: Accounts, Invoice History, Date, Opportunities, Products and Services, Code Headers, System Users, and Xero Credits.
+## Deployment, Security & Administration
+- **Cloud deployment:** Published to Power BI Service and configured gateway data connections.  
+- **Access control:** Implemented Row-Level Security (RLS) to restrict data access by role/department.  
+- **Automation:** Scheduled dataset refreshes to maintain real-time accuracy without manual intervention.  
+- **Executive subscriptions:** Configured daily 09:00 AM snapshot subscriptions for executive distribution.  
+- **Transparency:** Added a "Last Refreshed" timestamp indicator (example: 11 Aug 2026, 22:21) so users always know data currency.
 
-The Solution: A 3-Part Dashboard Suite
-I built a cohesive, tabbed Power BI report categorized into three highly focused dashboards:
+---
 
-1. Executive Dashboard
+## Business Impact
+- Eliminated manual data extraction and manual profit calculations through full pipeline automation.  
+- Delivered targeted visibility across departments with three distinct dashboards tailored to user needs.  
+- Increased executive engagement and improved decision-making through automated daily snapshots.
 
-    Calculates and displays true net profit by programmatically extracting live financial data from Xero and supplementary Excel files, automatically deducting credit notes from the gross profit.
+---
 
-    Features custom DAX measures for Year-over-Year (YoY) percentage changes (e.g., highlighting positive/negative shifts with intuitive green and red conditional formatting).
-
-2. Sales Dashboard
-
-    Volume & Value Tracking: Monitors exact KPIs including Invoice Count (e.g., 4,362), Average Invoice Value (£1.55K), and Total Credits (£30.70K).
-
-    Account & Product Visibility: Ranks the Top 20 Accounts (e.g., Widnes Sceptical, CLP Group FS LTD) and Top Products by Sales to identify key revenue drivers.
-
-    Financial Health: Includes a "Xero Status Breakdown" donut chart to track payment statuses (Paid, Awaiting Payment, Authorised, Voided, Draft), with over 80% successfully paid.
-
-    Performance Timelines: Visualizes granular monthly sales trends and estimated revenue broken down by account owner.
-
-3. Quotes Dashboard
-
-    Pipeline Monitoring: Tracks Quote Count (1,047), Total Quote Value (£3.49M), and Average Margin % (38.89%).
-
-    Conversion & State Metrics: Breaks down quotes by state (Active vs. Inactive) and visualizes the monthly quote generation trend.
-
-    Owner & Account Analytics: Details Quote Value and Quote Count by specific account owners, as well as highlighting the top accounts by quote value (e.g., ABCD Asackpool, Edmundson).
-
-Deployment, Security & Administration
-
-    Cloud Deployment: Published the finalized dashboard to Power BI Service and managed gateway data connections.
-
-    Access Control: Configured and assigned specific user roles utilizing Row-Level Security (RLS) to strictly govern data access across different departments.
-
-    Automation: Established scheduled data refreshes to maintain real-time accuracy without manual intervention.
-
-    Executive Subscriptions: Configured automated dashboard subscriptions, delivering high-level snapshot notifications to executives' inboxes daily at 9:00 AM.
-
-    Transparency: Engineered a custom "Last Refreshed" timestamp indicator (e.g., 11 Aug 2026, 22:21) to ensure data transparency for all end-users.
-
-Business Impact
-
-    Eliminated manual data extraction and complex profit calculation by fully automating the pipeline.
-
-    Provided specific departments with targeted, immediate visibility into their exact KPIs across three distinct dashboards.
-
-    Improved executive engagement and decision-making through automated 9:00 AM snapshot deliveries directly to their inboxes.
-
-Regards,
-
-Muhammad Rizwan Khan
+## Contact
+Muhammad Rizwan Khan  
+(Data Analyst / Power BI Developer)  
+GitHub: @rizwanbinakbar
